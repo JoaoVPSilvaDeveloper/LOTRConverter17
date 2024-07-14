@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var showExchangeInfo = false
+    @State var showExchangeInfo: Bool = false
+    @State var leftAmount : String = ""
+    @State var rightAmount : String = ""
     
     var body: some View {
         ZStack {
@@ -48,9 +50,12 @@ struct ContentView: View {
                                 .foregroundStyle(.white)
 
                         }
+                        .padding(.bottom, -5)
                         
                         // Textfield
-                        Text("Textfield")
+                        TextField("Amount", text: $leftAmount)
+                            .textFieldStyle(.roundedBorder)
+                        
                     }
                     
                     // Equal sign
@@ -76,12 +81,17 @@ struct ContentView: View {
                                 .frame(height: 33)
 
                         }
+                        .padding(.bottom, -5)
                         
                         // Textfield
-                        Text("Textfield")
+                        TextField("Amount", text: $rightAmount)
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.trailing)
                     }
                 }
-                
+                .padding()
+                .background(.black.opacity(0.7))
+                .clipShape(.capsule)
                 Spacer()
                 
                 // Info button
